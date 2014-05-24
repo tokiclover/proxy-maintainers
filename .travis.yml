@@ -14,5 +14,6 @@ before_script:
     - rsync --recursive --links --safe-links --perms --times --omit-dir-times --compress --force --whole-file --delete --stats --human-readable --timeout=180 --exclude=/distfiles --checksum --quiet rsync://rsync.gentoo.org/gentoo-portage /usr/portage
     - ln -s /usr/portage/profiles/base/ /etc/portage/make.profile
     - cd travis-overlay
+    - sed -i 's/fcmd=fcmd/fcmd=("%s -q" % fcmd)/' ./../portage-2.2.10/bin/repoman
 script: 
     - "./../portage-2.2.10/bin/repoman full -d"
