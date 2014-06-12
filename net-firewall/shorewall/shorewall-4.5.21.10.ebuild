@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -23,7 +23,7 @@ MY_MAJOR_RELEASE_NUMBER=$(get_version_component_range 1-2)
 MY_MAJORMINOR_RELEASE_NUMBER=$(get_version_component_range 1-3)
 
 DESCRIPTION='The Shoreline Firewall, commonly known as Shorewall, is'
-DESCRIPTION+=' a high-level tool for configuring Netfilter.'
+DESCRIPTION+=' a high-level tool for configuring Netfilter'
 HOMEPAGE="http://www.shorewall.net/"
 SRC_URI="
 	http://www1.shorewall.net/pub/shorewall/${MY_URL_PREFIX}${MY_MAJOR_RELEASE_NUMBER}/shorewall-${MY_MAJORMINOR_RELEASE_NUMBER}/${MY_P}.tar.bz2
