@@ -156,7 +156,7 @@ RDEPEND="${RDEPEND}
 		vpx? ( media-libs/libvpx:0 )
 		X? ( x11-libs/libX11:0 )
 		x264? ( >=media-libs/x264-0.0.20090923:0= )
-		x264? ( media-libs/x265:0= )
+		x265? ( media-libs/x265:0= )
 		xcb? ( >=x11-libs/libxcb-1.6:0 >=x11-libs/xcb-util-0.3.4:0 >=x11-libs/xcb-util-keysyms-0.3.4:0 )
 		xml? ( >=dev-libs/libxml2-2.5:2 )
 		zvbi? ( >=media-libs/zvbi-0.2.25:0 )
