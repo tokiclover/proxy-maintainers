@@ -187,7 +187,7 @@ REQUIRED_USE="
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
-	if [[ "$(tc-getCC)" == *"gcc"* ]] ; then
+	if [[ "${MERGE_TYPE}" != "binary" && "$(tc-getCC)" == *"gcc"* ]] ; then
 		if [[ $(gcc-major-version) < 4 || ( $(gcc-major-version) == 4 && $(gcc-minor-version) < 5 ) ]] ; then
 			die "You need to have at least >=sys-devel/gcc-4.5 to build and/or have a working vlc, see bug #426754."
 		fi
@@ -250,7 +250,9 @@ src_prepare() {
 	fi
 
 	# Disable a bogus check
-	sed -i "s:libavcodec < 56:libavcodec < 57:g" configure.ac || die
+	if ! use avcodec; then
+		sed -i "s:libavcodec < 56:libavcodec < 57:g" configure.ac || die
+	fi
 
 	eautoreconf
 
