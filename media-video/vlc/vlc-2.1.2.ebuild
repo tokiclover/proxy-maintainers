@@ -141,7 +141,7 @@ RDEPEND="
 		udev? ( >=virtual/udev-142:0 )
 		upnp? ( net-libs/libupnp:0 )
 		v4l? ( media-libs/libv4l:0 )
-		vaapi? ( x11-libs/libva:0 virtual/ffmpeg[vaapi] )
+		vaapi? ( x11-libs/libva:0[X] virtual/ffmpeg[vaapi] )
 		vcdx? ( >=dev-libs/libcdio-0.78.2:0 >=media-video/vcdimager-0.7.22:0 )
 		vdpau? ( >=x11-libs/libvdpau-0.6:0 !<media-video/libav-10_beta1 )
 		vorbis? ( media-libs/libvorbis:0 )
