@@ -234,7 +234,9 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.1.0-TomWij-bisected-PA-broken-underflow.patch
 
 	# Disable avcodec checks when avcodec is not used.
-	sed -i 's/^#if LIBAVCODEC_VERSION_CHECK(.*)$/#if 0/' modules/codec/avcodec/fourcc.c || die
+	if ! use avcodec; then
+		sed -i 's/^#if LIBAVCODEC_VERSION_CHECK(.*)$/#if 0/' modules/codec/avcodec/fourcc.c || die
+	fi
 
 	# Don't use --started-from-file when not using dbus.
 	if ! use dbus ; then
@@ -242,9 +244,7 @@ src_prepare() {
 	fi
 
 	# Disable a bogus check
-	if ! use avcodec; then
-		sed -i "s:libavcodec < 56:libavcodec < 57:g" configure.ac || die
-	fi
+	sed -i "s:libavcodec < 56:libavcodec < 57:g" configure.ac || die
 
 	eautoreconf
 
