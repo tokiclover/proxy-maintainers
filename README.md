@@ -9,8 +9,9 @@ Users are encouraged to maintain packages, that are assigned to 'maintainer-need
 
 ### Workflow
 
-If you're currently a proxied maintainer for a certain package and want to push an update to the tree, please fork this repository and create a pull request. 
-The members of the proxy maintainers project will review your pull request and get it into the tree.
+If you're currently a proxied maintainer for a certain package and want to push an update to the tree, please fork this repository and create a pull request. Updates concerning KEYWORDS (i.e. stabilization) should be handled by the appropriate arch teams on [bugs.gentoo.org](https://bugs.gentoo.org).
+
+The members of the proxy maintainers project will review your pull request, __merge__ it and move the changes into the tree.
 
 If you're currently not a proxied maintainer, please contact the project first either via mail ( <proxy-maint@gentoo.org> ) or via [bugs.gentoo.org](https://bugs.gentoo.org).
 
