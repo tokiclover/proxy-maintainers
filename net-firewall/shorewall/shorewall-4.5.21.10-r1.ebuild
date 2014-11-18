@@ -62,6 +62,8 @@ pkg_pretend() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PVR}/shorewall-10-fix-ipset-support-detection.patch
+
 	cp "${FILESDIR}"/${PVR}/shorewallrc "${S}"/shorewallrc.gentoo || die "Copying shorewallrc failed"
 	eprefixify "${S}"/shorewallrc.gentoo
 
