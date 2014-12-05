@@ -34,10 +34,18 @@ pkg_setup() {
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.8.3-shared.patch
 	epatch "${FILESDIR}"/${PN}-2.8.17-config.patch
-	epatch "${FILESDIR}"/${PN}-2.8.13-sharedlua.patch
+	epatch "${FILESDIR}"/${P}-sharedlua.patch
 
 	# Copy lua modules into build dir
-	cp "${S}"/deps/lua/src/{lua_cjson,lua_cmsgpack,lua_struct,strbuf}.c "${S}"/src || die
+	cp "${S}"/deps/lua/src/{fpconv,lua_bit,lua_cjson,lua_cmsgpack,lua_struct,strbuf}.c "${S}"/src || die
+	cp "${S}"/deps/lua/src/{fpconv,strbuf}.h "${S}"/src || die
+	# Append cflag for lua_cjson
+	# https://github.com/antirez/redis/commit/4fdcd213#diff-3ba529ae517f6b57803af0502f52a40bL61
+	append-cflags "-DENABLE_CJSON_GLOBAL"
+
+	# Avoid glibc noise
+	# https://github.com/antirez/redis/pull/2189
+	[[ ${CHOST} == *linux* ]] && append-cflags "-D_DEFAULT_SOURCE"
 
 	# now we will rewrite present Makefiles
 	local makefiles=""
