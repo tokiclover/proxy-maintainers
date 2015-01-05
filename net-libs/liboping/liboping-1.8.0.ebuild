@@ -7,8 +7,8 @@ EAPI=5
 inherit base autotools
 
 DESCRIPTION="C library and ncurses based program to generate ICMP echo requests and ping multiple hosts at once"
-HOMEPAGE="http://verplant.org/liboping"
-SRC_URI="http://verplant.org/${PN}/files/${P}.tar.bz2"
+HOMEPAGE="http://noping.cc/"
+SRC_URI="http://noping.cc/files/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0"
