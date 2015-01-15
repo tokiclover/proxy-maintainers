@@ -1,0 +1,3 @@
+# Karol Herbst <gentoo@karolherbst.de> (15 Jan 2015)
+# depends on Qt5 which is masked
+>=media-sound/teamspeak-client-bin-3.0.16
