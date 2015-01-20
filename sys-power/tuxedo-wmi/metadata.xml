@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>gentoo@karolherbst.de</email>
+    <name>Karol Herbst</name>
+    <description>Proxy-Maintainer. Assign bugs to him</description>
+  </maintainer>
+  <longdescription>A driver for the Clevo P15xSM(1)(-A)/P17xSM(-A)/P370SM-A Laptop models</longdescription>
+</pkgmetadata>
