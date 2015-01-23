@@ -1,28 +1,26 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/http-parser/http-parser-2.4.1.ebuild,v 1.1 2015/01/23 00:25:43 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/http-parser/http-parser-2.3.ebuild,v 1.6 2014/10/12 08:55:19 ago Exp $
 
 EAPI=5
 
-SONAME="libhttp_parser.so.${PV}"
+SONAMEVER="2.3"
+SONAME="libhttp_parser.so.${SONAMEVER}"
 
 inherit eutils toolchain-funcs multilib multilib-minimal
 
-DESCRIPTION="http request/response parser for c"
+DESCRIPTION="A parser for HTTP messages written in C. It parses both requests and responses"
 HOMEPAGE="https://github.com/joyent/http-parser"
 SRC_URI="https://github.com/joyent/http-parser/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+SLOT="0/${SONAMEVER}"
+KEYWORDS="amd64 ~arm ~ppc x86"
 IUSE="static-libs"
 
 src_prepare() {
-
-	sed -i  -e 's: -Werror::' \
-		-e 's:-O3 ::' \
-		Makefile || die
 	tc-export CC AR
+	epatch "${FILESDIR}"/${P}-flags.patch
 	multilib_copy_sources
 }
 
