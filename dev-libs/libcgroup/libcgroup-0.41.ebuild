@@ -64,13 +64,6 @@ src_configure() {
 	autotools-utils_src_configure
 }
 
-src_test() {
-	# Use mount cgroup to build directory
-	# sandbox restricted to trivial build,
-	# possible kill Diego tanderbox ;)
-	true
-}
-
 src_install() {
 	autotools-utils_src_install
 	prune_libtool_files --all
@@ -82,24 +75,8 @@ src_install() {
 		newconfd "${FILESDIR}"/cgconfig.confd cgconfig || die
 		newinitd "${FILESDIR}"/cgconfig.initd cgconfig || die
 	fi
-
 	if use daemon; then
 		newconfd "${FILESDIR}"/cgred.confd cgred || die
 		newinitd "${FILESDIR}"/cgred.initd cgred || die
 	fi
-}
-
-pkg_postinst() {
-	elog "Read the kernel docs on cgroups, related schedulers, and the"
-	elog "block I/O controllers.  The Redhat Resource Management Guide"
-	elog "is also helpful.  DO NOT enable the cgroup namespace subsytem"
-	elog "if you want a custom config, rule processing, etc.  This option"
-	elog "should only be enabled for a VM environment.  The UID wildcard"
-	elog "rules seem to work only without a custom config (since wildcards"
-	elog "don't work in config blocks).  Specific user-id configs *do*"
-	elog "work, but be careful about how the mem limits add up if using"
-	elog "the memory.limit_* directives.  There should be a basic task"
-	elog "partitioning into the default group when running cgred with no"
-	elog "specific config blocks or rules (other than the mount directive)."
-	elog "See the docs for the pam module config, and as always, RTFM..."
 }
