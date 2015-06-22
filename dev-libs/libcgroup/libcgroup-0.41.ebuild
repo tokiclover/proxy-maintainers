@@ -48,19 +48,16 @@ src_prepare() {
 }
 
 src_configure() {
-	local my_conf
+	local -a myeconfargs=( ${EXTRA_CGROUP_CONF} )
 
-	if use pam; then
-		my_conf=" --enable-pam-module-dir=$(getpam_mod_dir) "
-	fi
+	use pam && 	myeconfargs=( --enable-pam-module-dir=$(getpam_mod_dir) )
 
 	local myeconfargs=(
 		$(use_enable daemon)
 		$(use_enable debug)
 		$(use_enable pam)
 		$(use_enable tools)
-		${my_conf}
-		)
+	)
 	autotools-utils_src_configure
 }
 
