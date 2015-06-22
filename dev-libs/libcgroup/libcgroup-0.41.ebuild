@@ -38,10 +38,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-
 	# Change rules file location
-	sed -e 's:/etc/cgrules.conf:/etc/cgroup/cgrules.conf:' \
-		-i src/libcgroup-internal.h || die "sed failed"
+	sed -e 's:/etc/:/etc/cgroup/:' -i src/libcgroup-internal.h || die "sed failed"
 	sed -e 's:\(pam_cgroup_la_LDFLAGS.*\):\1\ -avoid-version:' \
 		-i src/pam/Makefile.am || die "sed failed"
 	sed -e 's#/var/run#/run#g' -i configure.in || die "sed failed"
