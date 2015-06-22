@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/dev-libs/libcgroup/libcgroup-0.41.ebuild,v 1.5 2015/01/26 10:06:41 ago Exp $
 
-EAPI="5"
+EAPI=5
 
 AUTOTOOLS_AUTORECONF=1
+AUTOTOOLS_PRUNE_LIBTOOL_FILES=all
 
 inherit eutils linux-info pam autotools-utils
 
@@ -26,7 +27,8 @@ DEPEND="
 	"
 REQUIRED_USE="daemon? ( tools )"
 
-DOCS=(README_daemon README README_systemd INSTALL)
+DOCS=( README_daemon README README_systemd )
+
 pkg_setup() {
 	local CONFIG_CHECK="~CGROUPS"
 	if use daemon; then
@@ -63,7 +65,6 @@ src_configure() {
 
 src_install() {
 	autotools-utils_src_install
-	prune_libtool_files --all
 
 	insinto /etc/cgroup
 	doins samples/*.conf || die
